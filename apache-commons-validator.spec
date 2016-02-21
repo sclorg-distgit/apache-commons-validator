@@ -7,7 +7,7 @@
 
 Name:             %{?scl_prefix}%{pkg_name}
 Version:          1.4.0
-Release:          8.11%{?dist}
+Release:          8.12%{?dist}
 Summary:          Apache Commons Validator
 License:          ASL 2.0
 URL:              http://commons.apache.org/%{base_name}/
@@ -15,9 +15,9 @@ Source0:          http://www.apache.org/dist/commons/%{base_name}/source/%{short
 BuildArch:        noarch
 
 BuildRequires:    %{?scl_prefix_java_common}javapackages-tools
-BuildRequires:    maven30-apache-commons-parent >= 26-7
+BuildRequires:    %{?scl_prefix}apache-commons-parent >= 26-7
 BuildRequires:    %{?scl_prefix_java_common}apache-commons-beanutils
-BuildRequires:    maven30-apache-commons-digester
+BuildRequires:    %{?scl_prefix}apache-commons-digester
 BuildRequires:    %{?scl_prefix_java_common}apache-commons-logging
 BuildRequires:    %{?scl_prefix_java_common}maven-local
 BuildRequires:    %{?scl_prefix_java_common}junit
@@ -40,7 +40,7 @@ This package contains the API documentation for %{pkg_name}.
 
 %prep
 %setup -q -n %{short_name}-%{version}-src
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 sed -i 's/\r//' LICENSE.txt
 sed -i 's/\r//' RELEASE-NOTES.txt
@@ -51,13 +51,13 @@ sed -i 's/\r//' NOTICE.txt
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -70,6 +70,9 @@ set -e -x
 
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.4.0-8.12
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 1.4.0-8.11
 - maven33 rebuild
 
