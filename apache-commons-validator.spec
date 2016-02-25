@@ -7,7 +7,7 @@
 
 Name:             %{?scl_prefix}%{pkg_name}
 Version:          1.4.0
-Release:          8.12%{?dist}
+Release:          8.13%{?dist}
 Summary:          Apache Commons Validator
 License:          ASL 2.0
 URL:              http://commons.apache.org/%{base_name}/
@@ -19,7 +19,7 @@ BuildRequires:    %{?scl_prefix}apache-commons-parent >= 26-7
 BuildRequires:    %{?scl_prefix_java_common}apache-commons-beanutils
 BuildRequires:    %{?scl_prefix}apache-commons-digester
 BuildRequires:    %{?scl_prefix_java_common}apache-commons-logging
-BuildRequires:    %{?scl_prefix_java_common}maven-local
+BuildRequires:    %{?scl_prefix}maven-local
 BuildRequires:    %{?scl_prefix_java_common}junit
 
 
@@ -70,6 +70,9 @@ set -e -x
 
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 1.4.0-8.13
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.4.0-8.12
 - maven33 rebuild #2
 
